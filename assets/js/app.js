@@ -44,10 +44,7 @@ liveSocket.connect()
 window.liveSocket = liveSocket
 
 import Player from "./player"
-let video = document.getElementById("video")
+import socket from "./user_socket.js"
+import Video from "./video"
 
-if(video) {
-    Player.init(video.id, video.getAttribute("data-player-id"), () => {
-        console.log("player ready!")
-    })
-}
+Video.init(socket, document.getElementById("video"))
