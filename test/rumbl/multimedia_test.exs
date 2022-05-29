@@ -22,7 +22,7 @@ defmodule Rumbl.MultimediaTest do
   describe "videos" do
     alias Rumbl.Multimedia.Video
 
-    @valid_attrs %{description: "desc", title: "title", url: "http://local"}
+    @valid_attrs %{description: "desc", title: "My Video Title", url: "http://local"}
     @invalid_attrs %{description: nil, title: nil, url: nil}
 
     test "list_videos/0 returns all videos" do
@@ -44,8 +44,9 @@ defmodule Rumbl.MultimediaTest do
       assert {:ok, %Video{} = video} = Multimedia.create_video(owner, @valid_attrs)
 
       assert video.description == "desc"
-      assert video.title == "title"
+      assert video.title == "My Video Title"
       assert video.url == "http://local"
+      assert video.slug == "my-video-title"
     end
 
     test "create_video/2 with invalid data returns error changeset" do
